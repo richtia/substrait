@@ -26,6 +26,8 @@ extra_css:
   - stylesheets/extra.css
 
 extra:
+  version:
+    provider: mike
   versions:
     slackinvitelink: https://join.slack.com/t/substrait/shared_invite/zt-10oeki45w-FARWnh4NMpXnm4x~hWyiGQ
   analytics:
@@ -50,6 +52,15 @@ plugins:
         'types/simple_logical_types.md': 'types/type_classes.md'
         'types/compound_logical_types.md': 'types/type_classes.md'
         'types/user_defined_types.md': 'types/type_classes.md'
+  - mike:
+      # These fields are all optional; the defaults are as below...
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
 markdown_extensions:
   - smarty
   - sane_lists
