@@ -24,10 +24,14 @@ theme:
     - toc.integrate
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/version-select.css
+extra_javascript:
+  - js/version-select.js
 
 extra:
   version:
     provider: mike
+    default: latestl
   versions:
     slackinvitelink: https://join.slack.com/t/substrait/shared_invite/zt-10oeki45w-FARWnh4NMpXnm4x~hWyiGQ
   analytics:
@@ -53,14 +57,12 @@ plugins:
         'types/compound_logical_types.md': 'types/type_classes.md'
         'types/user_defined_types.md': 'types/type_classes.md'
   - mike:
-      # These fields are all optional; the defaults are as below...
-      alias_type: symlink
-      redirect_template: null
-      deploy_prefix: ''
-      canonical_version: null
-      version_selector: true
-      css_dir: css
-      javascript_dir: js
+      # these fields are all optional; the defaults are as below...
+      version_selector: true   # set to false to leave out the version selector
+      css_dir: stylesheets             # the directory to put the version selector's CSS
+      javascript_dir: stylesheets       # the directory to put the version selector's JS
+      canonical_version: null  # the version for <link rel="canonical">; `null`
+                               # uses the version specified via `mike deploy`
 markdown_extensions:
   - smarty
   - sane_lists
