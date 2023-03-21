@@ -15,19 +15,19 @@ st.set_page_config(layout='wide')
 
 
 def support_matrix_df():
-    # resp = requests.get("https://ibis-project.org/backends/raw_support_matrix.csv")
-    # resp.raise_for_status()
+    resp = requests.get("https://github.com/richtia/substrait/blob/streamlit_test_report/site/docs/producer_consumer_compatibility/consumer_results.csv")
+    resp.raise_for_status()
 
-    # with tempfile.NamedTemporaryFile() as f:
-        # f.write(resp.content)
-    return (
-        ibis.read_csv("./consumer_results.csv")
-        .relabel({'FullFunction': 'full_function'})
-        .mutate(
-            function_category=_.full_function.split(".")[-2],
+    with tempfile.NamedTemporaryFile() as f:
+        f.write(resp.content)
+        return (
+            ibis.read_csv(f.name)
+            .relabel({'FullFunction': 'full_function'})
+            .mutate(
+                function_category=_.full_function.split(".")[-2],
+            )
+            .execute()
         )
-        .execute()
-    )
 
 
 def backends_info_df():
