@@ -1,2 +1,4 @@
-ibis-framework[duckdb]>=4.0
+ibis-framework
+pandas
+requests
 streamlit
