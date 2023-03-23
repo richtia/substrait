@@ -1,4 +1,4 @@
-FullOperation,DuckDBProducer,IbisProducer,IsthmusProducer
+FullFunction,DuckDBProducer,IbisProducer,IsthmusProducer
 approximation.approx_count_distinct,True,False,False
 arithmetic_decimal.add,True,False,False
 arithmetic_decimal.subtract,True,False,False
