@@ -15,7 +15,7 @@ st.set_page_config(layout='wide')
 
 
 def support_matrix_df():
-    resp = requests.get("https://raw.githubusercontent.com/richtia/substrait/streamlit_test_report/site/docs/producer_consumer_compatibility/consumer_results.csv")
+    resp = requests.get("https://raw.githubusercontent.com/richtia/substrait/streamlit_test_report/site/docs/producer_function_compatibility/producer_results.csv")
     resp.raise_for_status()
 
     with tempfile.NamedTemporaryFile() as f:
