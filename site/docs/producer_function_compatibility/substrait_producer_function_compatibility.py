@@ -22,19 +22,19 @@ ibis.options.verbose_log = lambda sql: sql_queries.append(sql)
 
 
 def support_matrix_df():
-    # resp = requests.get("https://ibis-project.org/backends/raw_support_matrix.csv")
-    # resp.raise_for_status()
+    resp = requests.get("https://raw.githubusercontent.com/richtia/substrait/streamlit_test_report/site/docs/producer_function_compatibility/producer_results.csv")
+    resp.raise_for_status()
 
-    # with tempfile.NamedTemporaryFile() as f:
-        # f.write(resp.content)
-    return (
-        ibis.read_csv("producer_results.csv")
-        .relabel({'FullOperation': 'full_operation'})
-        .mutate(
-            function_category=_.full_operation.split(".")[-2],
+    with tempfile.NamedTemporaryFile() as f:
+        f.write(resp.content)
+        return (
+            ibis.read_csv(f.name)
+            .relabel({'FullFunction': 'full_function'})
+            .mutate(
+                function_category=_.full_function.split(".")[-2],
+            )
+            .execute()
         )
-        .execute()
-    )
 
 
 def backends_info_df():
