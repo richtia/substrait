@@ -15,11 +15,6 @@ ONE_HOUR_IN_SECONDS = datetime.timedelta(hours=1).total_seconds()
 
 st.set_page_config(layout='wide')
 
-# Track all queries. We display them at the bottom of the page.
-ibis.options.verbose = True
-sql_queries = []
-ibis.options.verbose_log = lambda sql: sql_queries.append(sql)
-
 
 def support_matrix_df():
     resp = requests.get("https://raw.githubusercontent.com/richtia/substrait/streamlit_test_report/site/docs/producer_function_compatibility/producer_results.csv")
